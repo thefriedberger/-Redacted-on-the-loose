@@ -1,0 +1,83 @@
+<xml>
+	<!-- This file holds info for laying out the Prospector card game. -->
+	
+	<!-- The multiplier is multiplied by the x and y attributes below. -->
+	<!-- This determines how loose or tight the layout is. --> 
+	<multiplier x="1.25" y="1.5" />
+	
+	<!-- In the XML below, id is the number of the card -->
+	<!-- x and y set position -->
+	<!-- faceup is 1 if the card is face-up -->
+	<!-- layer sets which column it is -->
+	<!-- hiddenby is the ids of cards that keep a card face-down -->
+	
+	<!-- First group -->
+	<slot id="0" x="-4.6" y="7.6" faceup="0" layer="0" />
+  <slot id="1" x="-1.6" y="7.6" faceup="0" layer="0" />
+  <slot id="2" x="1.4" y="7.6" faceup="0" layer="0" />
+  <slot id="3" x="4.4" y="7.6" faceup="0" layer="0" />
+  
+  <slot id="4" x="7.4" y="3.85" faceup="0" layer="0" />
+  <slot id="5" x="4.4" y="3.85" faceup="0" layer="0" />
+  <slot id="6" x="1.4" y="3.85" faceup="0" layer="0" />
+  <slot id="7" x="-1.6" y="3.85" faceup="0" layer="0" />
+  <slot id="8" x="-4.6" y="3.85" faceup="0" layer="0" />
+  <slot id="9" x="-7.6" y="3.85" faceup="0" layer="0" />
+  
+  <slot id="10" x="-7.6" y=".1" faceup="0" layer="0" />
+  <slot id="11" x="-4.6" y=".1" faceup="0" layer="0" />
+  <slot id="12" x="-1.6" y=".1" faceup="0" layer="0" />
+  <slot id="13" x="1.4" y=".1" faceup="0" layer="0" />
+  <slot id="14" x="4.4" y=".1" faceup="0" layer="0" />
+  <slot id="15" x="7.4" y=".1" faceup="0" layer="0" />
+  
+  <slot id="16" x="7.4" y="-3.65" faceup="0" layer="0" />
+  <slot id="17" x="4.4" y="-3.65" faceup="0" layer="0" />
+  <slot id="18" x="1.4" y="-3.65" faceup="0" layer="0" />
+  <slot id="19" x="-1.6" y="-3.65" faceup="0" layer="0" />
+  <slot id="20" x="-4.6" y="-3.65" faceup="0" layer="0" />
+  <slot id="21" x="-7.6" y="-3.65" faceup="0" layer="0" />
+  
+  <slot id="22" x="-4.6" y="-7.4" faceup="0" layer="0" />
+  <slot id="23" x="-1.6" y="-7.4" faceup="0" layer="0" />
+  <slot id="24" x="1.4" y="-7.4" faceup="0" layer="0" />
+  <slot id="25" x="4.4" y="-7.4" faceup="0" layer="0" />
+
+  <!-- Second group -->
+  <slot id="26" x="18.4" y="7.6" faceup="0" layer="1" />
+  <slot id="27" x="21.4" y="7.6" faceup="0" layer="1" />
+  <slot id="28" x="24.4" y="7.6" faceup="0" layer="1" />
+  <slot id="29" x="27.4" y="7.6" faceup="0" layer="1" />
+  
+  <slot id="30" x="30.4" y="3.85" faceup="0" layer="1" />
+  <slot id="31" x="27.4" y="3.85" faceup="0" layer="1" />
+  <slot id="32" x="24.4" y="3.85" faceup="0" layer="1" />
+  <slot id="33" x="21.4" y="3.85" faceup="0" layer="1" />
+  <slot id="34" x="18.4" y="3.85" faceup="0" layer="1" />
+  <slot id="35" x="15.4" y="3.85" faceup="0" layer="1" />
+
+  <slot id="36" x="15.4" y=".1" faceup="0" layer="1" />
+  <slot id="37" x="18.4" y=".1" faceup="0" layer="1" />
+  <slot id="38" x="21.4" y=".1" faceup="0" layer="1" />
+  <slot id="39" x="24.4" y=".1" faceup="0" layer="1" />
+  <slot id="40" x="27.4" y=".1" faceup="0" layer="1" />
+  <slot id="41" x="30.4" y=".1" faceup="0" layer="1" />
+  
+  <slot id="42" x="30.4" y="-3.65" faceup="0" layer="1" />
+  <slot id="43" x="27.4" y="-3.65" faceup="0" layer="1" />
+  <slot id="44" x="24.4" y="-3.65" faceup="0" layer="1" />
+  <slot id="45" x="21.4" y="-3.65" faceup="0" layer="1" />
+  <slot id="46" x="18.4" y="-3.65" faceup="0" layer="1" />
+  <slot id="47" x="15.4" y="-3.65" faceup="0" layer="1" />
+  
+  <slot id="48" x="18.4" y="-7.4" faceup="0" layer="1" />
+  <slot id="49" x="21.4" y="-7.4" faceup="0" layer="1" />
+  <slot id="50" x="24.4" y="-7.4" faceup="0" layer="1" />
+  <slot id="51" x="27.4" y="-7.4" faceup="0" layer="1" />
+  
+	<!-- This positions the collected matches for each player -->
+	<slot type="matchesP1" x="-11.4" y=".1" layer="2"/>
+  <slot type="matchesP2" x="10.9" y=".1" layer="2"/>
+	
+</xml>
+	
