@@ -35,6 +35,8 @@ public class Bartok : MonoBehaviour
     public float drawTimeStagger = .1f;
     public GameObject gtGameOver;
     public GameObject gtRoundResult;
+    public GUIText gtOlympusCount;
+    public int olympusCount = 0;
 
     [Header("For debug use only")]
     public Deck deck;
@@ -101,6 +103,9 @@ public class Bartok : MonoBehaviour
         tCB.eventualSortLayer = layout.target.layerName;
         if (targetCard != null) MoveToDiscard(targetCard);
         targetCard = tCB;
+        olympusCount = olympusCount + targetCard.rank;
+        gtOlympusCount.text = olympusCount.ToString();
+
 
         return tCB;
     }
@@ -181,7 +186,10 @@ public class Bartok : MonoBehaviour
                     tCB.callbackPlayer = CURRENT_PLAYER;
                     Utils.tr(Utils.RoundToPlaces(Time.time), "Bartok.CardClicked()", "Play", tCB.name, targetCard.name + " is target");
                     phase = TurnPhase.waiting;
-                }
+                    olympusCount = olympusCount + targetCard.rank;
+                    gtOlympusCount.text = olympusCount.ToString();
+                    
+}
                 else Utils.tr(Utils.RoundToPlaces(Time.time), "Bartok.CardClicked()", "Attempted to Play", tCB.name, targetCard.name + " is target");
                 break;
         }
@@ -323,7 +331,11 @@ public class Bartok : MonoBehaviour
 
         drawPile = UpgradeCardsList(deck.cards);
         LayoutGame();
+
+
     }
+
+
     // This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
     void FixedUpdate()
     {
