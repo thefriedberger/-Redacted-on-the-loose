@@ -41,17 +41,35 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Row0
-    uniqueID: 4244889605
+  - name: 1
+    uniqueID: 1261710873
     locked: 0
-  - name: Row1
-    uniqueID: 2103124177
+  - name: 2
+    uniqueID: 1364369369
     locked: 0
-  - name: Row2
-    uniqueID: 3216534445
+  - name: 3
+    uniqueID: 3510377725
     locked: 0
-  - name: Row3
-    uniqueID: 938306291
+  - name: 4
+    uniqueID: 3483733491
+    locked: 0
+  - name: 5
+    uniqueID: 1723369673
+    locked: 0
+  - name: 6
+    uniqueID: 1925581555
+    locked: 0
+  - name: 7
+    uniqueID: 1769693773
+    locked: 0
+  - name: 8
+    uniqueID: 1963789097
+    locked: 0
+  - name: 9
+    uniqueID: 3993426857
+    locked: 0
+  - name: 10
+    uniqueID: 325670663
     locked: 0
   - name: Discard
     uniqueID: 1100370073

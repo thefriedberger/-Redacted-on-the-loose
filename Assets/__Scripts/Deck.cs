@@ -3,8 +3,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class Deck : MonoBehaviour
-{
+public class Deck : MonoBehaviour {
     #region GlobalVareables
     #region DefaultVareables
     public bool isDebug = false;
@@ -48,47 +47,31 @@ public class Deck : MonoBehaviour
     #endregion
     #endregion
 
-    #region CustomFunction
-    #region Static
-    public static void Shuffle(ref List<Card> oCards)
-    {
+    public static void Shuffle(ref List<Card> oCards) {
         List<Card> tCards = new List<Card>();
 
         int ndx;
         tCards = new List<Card>();
-        while(oCards.Count > 0)
-        {
+        while (oCards.Count > 0) {
             ndx = Random.Range(0, oCards.Count);
             tCards.Add(oCards[ndx]);
             oCards.RemoveAt(ndx);
         }
         oCards = tCards;
     }
-    #endregion
 
-    #region Public
-    public void InitDeck(string deckXMLText)
-    {
-        if (GameObject.Find("Deck") == null)
-        {
+    public void InitDeck(string deckXMLText) {
+        if (GameObject.Find("Deck") == null) {
             GameObject anchorGO = new GameObject("Deck");
             deckAnchor = anchorGO.transform;
         }
 
-        dictSuits = new Dictionary<string, Sprite>()
-        {
-            { "C", suitClub},
-            { "D", suitDiamond},
-            { "H", suitHeart},
-            { "S", suitSpade}
-        };
 
         ReadDeck(deckXMLText);
         MakeCards();
     }
 
-    public void ReadDeck(string deckXMLText)
-    {
+    public void ReadDeck(string deckXMLText) {
         xmlr = new PT_XMLReader();
         xmlr.Parse(deckXMLText);
         PrintDebugMsg(deckXMLText);
@@ -103,8 +86,7 @@ public class Deck : MonoBehaviour
         decorators = new List<Decorator>();
         PT_XMLHashList xDecos = xmlr.xml["xml"][0]["decorator"];
         Decorator deco;
-        for(int i = 0; i < xDecos.Count; i++)
-        {
+        for (int i = 0; i < xDecos.Count; i++) {
             deco = new Decorator();
             deco.type = xDecos[i].att("type");
             deco.flip = xDecos[i].att("flip") == "1";
@@ -117,129 +99,109 @@ public class Deck : MonoBehaviour
 
         cardDefs = new List<CardDefinition>();
         PT_XMLHashList xCardDefs = xmlr.xml["xml"][0]["card"];
-        for(int i = 0; i < xCardDefs.Count; i++)
-        {
+        for (int i = 0; i < xCardDefs.Count; i++) {
             CardDefinition cDef = new CardDefinition();
             cDef.rank = int.Parse(xCardDefs[i].att("rank"));
             PT_XMLHashList xPips = xCardDefs[i]["pip"];
-            if(xPips != null)
-            {
-                for(int ii = 0; ii < xPips.Count; ii++)
-                {
-                    deco = new Decorator();
-                    deco.type = "pip";
-                    deco.flip = xPips[ii].att("flip") == "1";
-                    deco.loc.x = float.Parse(xPips[ii].att("x"));
-                    deco.loc.y = float.Parse(xPips[ii].att("y"));
-                    deco.loc.z = float.Parse(xPips[ii].att("z"));
-                    if (xPips[ii].HasAtt("scale")) deco.scale = float.Parse(xPips[ii].att("scale"));
-                    cDef.pips.Add(deco);
-                }
-            }
+
             if (xCardDefs[i].HasAtt("face")) cDef.face = xCardDefs[i].att("face");
             cardDefs.Add(cDef);
         }
     }
 
-    public CardDefinition GetCardDefinitionByRank(int rnk)
-    {
-        foreach(CardDefinition cd in cardDefs)
-        {
+    public CardDefinition GetCardDefinitionByRank(int rnk) {
+        foreach (CardDefinition cd in cardDefs) {
             if (cd.rank == rnk) return cd;
         }
 
         return null;
     }
 
-    public void MakeCards()
-    {
+    public void MakeCards() {
         cardNames = new List<string>();
-        string[] letters = new string[] { "C", "D", "H", "S" };
-        foreach(string s in letters)
-        {
-            for (int i = 0; i < 13; i++) cardNames.Add(s + (i + 1));
-        }
 
+        for (int j = 0; j < 4; j++) {
+            for (int i = 0; i < 10; i++) cardNames.Add("" + (i + 1));
+        }
+        for (int j = 0; j < 2; j++) {
+            for (int i = 10; i < 16; i++) cardNames.Add("" + (i + 1));
+        }
+        for (int j = 0; j < 3; j++) {
+            for (int i = 16; i < 17; i++) cardNames.Add("" + (i + 1));
+        }
+        for (int j = 0; j < 1; j++) {
+            for (int i = 17; i < 18; i++) cardNames.Add("" + (i + 1));
+        }
         cards = new List<Card>();
         Sprite ts = null;
         GameObject tGO = null;
         SpriteRenderer tSR = null;
-        
-        for (int i = 0; i < cardNames.Count; i++)
-        {
+        for (int i = 0; i < cardNames.Count; i++) {
             GameObject cgo = Instantiate(prefabCard) as GameObject;
             cgo.transform.parent = deckAnchor;
             Card card = cgo.GetComponent<Card>();
-
-            cgo.transform.localPosition = new Vector3((i % 13) * 3, i / 13 * 4, 0);
+            cgo.transform.localPosition = new Vector3((i % 18) * 3, i / 18 * 4, 0);
 
             card.name = cardNames[i];
-            card.suit = card.name[0].ToString();
-            card.rank = int.Parse(card.name.Substring(1));
-            if(card.suit == "D" || card.suit == "H")
-            {
-                card.colS = "Red";
-                card.color = Color.red;
-            }
-            else
-            {
-                card.colS = "Black";
-                card.color = Color.black;
-            }
+            card.rank = int.Parse(card.name);
+            string rank = "" + card.rank;
+
             card.def = GetCardDefinitionByRank(card.rank);
 
-            foreach(Decorator deco in decorators)
-            {
-                if(deco.type == "suit")
-                {
-                    tGO = Instantiate(prefabSprite) as GameObject;
-                    tSR = tGO.GetComponent<SpriteRenderer>();
-                    tSR.sprite = dictSuits[card.suit];
-                }
-                else
-                {
-                    tGO = Instantiate(prefabSprite) as GameObject;
-                    tSR = tGO.GetComponent<SpriteRenderer>();
-                    ts = rankSprites[card.rank];
-                    tSR.sprite = ts;
-                    tSR.color = card.color;
-                }
-
-                tSR.sortingOrder = 1;
-                tGO.transform.parent = cgo.transform;
-                tGO.transform.localPosition = deco.loc;
-                if (deco.flip) tGO.transform.rotation = Quaternion.Euler(0, 0, 180);
-                if (deco.scale != 1) tGO.transform.localScale = Vector3.one * deco.scale;
-                tGO.name = deco.type;
-                card.decosGOs.Add(tGO);
-            }
-
             PrintDebugMsg("Card.def = " + card.def.ToStringCD());
-            foreach(Decorator pip in card.def.pips)
-            {
-                tGO = Instantiate(prefabSprite) as GameObject;
-                tGO.transform.parent = cgo.transform;
-                tGO.transform.localPosition = pip.loc;
-                if (pip.flip) tGO.transform.rotation = Quaternion.Euler(0, 0, 180);
-                if (pip.scale != 1) tGO.transform.localScale = Vector3.one * pip.scale;
-                tGO.name = "pip";
-                tSR = tGO.GetComponent<SpriteRenderer>();
-                tSR.sprite = dictSuits[card.suit];
-                tSR.sortingOrder = 1;
-                card.pipGOs.Add(tGO);
-            }
 
-            if(card.def.face != " ")
-            {
+            Debug.Log(card.rank);
+            tGO = Instantiate(prefabSprite) as GameObject;
+            tSR = tGO.GetComponent<SpriteRenderer>();
+            ts = GetFace(rank);
+            tSR.sprite = ts;
+            tSR.sortingOrder = 1;
+            tGO.transform.parent = card.transform;
+            tGO.transform.localPosition = Vector3.zero;
+            tGO.name = "face";
+
+            /*
+            if (card.rank < 11) {
                 tGO = Instantiate(prefabSprite) as GameObject;
                 tSR = tGO.GetComponent<SpriteRenderer>();
-                ts = GetFace(card.def.face + card.suit);
+                ts = GetFace(rank);
                 tSR.sprite = ts;
                 tSR.sortingOrder = 1;
                 tGO.transform.parent = card.transform;
                 tGO.transform.localPosition = Vector3.zero;
                 tGO.name = "face";
             }
+            else if (card.rank < 17) {
+                tGO = Instantiate(prefabSprite) as GameObject;
+                tSR = tGO.GetComponent<SpriteRenderer>();
+                ts = GetFace(rank);
+                tSR.sprite = ts;
+                tSR.sortingOrder = 1;
+                tGO.transform.parent = card.transform;
+                tGO.transform.localPosition = Vector3.zero;
+                tGO.name = "face";
+            }
+            else if (card.rank < 18) {
+                tGO = Instantiate(prefabSprite) as GameObject;
+                tSR = tGO.GetComponent<SpriteRenderer>();
+                ts = GetFace(rank);
+                tSR.sprite = ts;
+                tSR.sortingOrder = 1;
+                tGO.transform.parent = card.transform;
+                tGO.transform.localPosition = Vector3.zero;
+                tGO.name = "face";
+            }
+            else {
+                tGO = Instantiate(prefabSprite) as GameObject;
+                tSR = tGO.GetComponent<SpriteRenderer>();
+                ts = GetFace(rank);
+                tSR.sprite = ts;
+                tSR.sortingOrder = 1;
+                tGO.transform.parent = card.transform;
+                tGO.transform.localPosition = Vector3.zero;
+                tGO.name = "face";
+            }
+            */
 
             tGO = Instantiate(prefabSprite) as GameObject;
             tSR = tGO.GetComponent<SpriteRenderer>();
@@ -251,74 +213,50 @@ public class Deck : MonoBehaviour
             card.back = tGO;
 
             card.FaceUp = true;
-            
+
             cards.Add(card);
         }
     }
 
-    public Sprite GetFace(string faceS)
-    {
-        foreach(Sprite tS in faceSprites)
-        {
+    public Sprite GetFace(string faceS) {
+        foreach (Sprite tS in faceSprites) {
             if (tS.name == faceS) return tS;
         }
 
         return null;
     }
-    #endregion
-
-    #region Private
-
-    #endregion
 
     #region Debug
-    private void PrintDebugMsg(string msg)
-    {
+    private void PrintDebugMsg(string msg) {
         if (isDebug) Debug.Log(debugScriptName + "(" + this.gameObject.name + "): " + msg);
     }
-    private void PrintWarningDebugMsg(string msg)
-    {
+    private void PrintWarningDebugMsg(string msg) {
         Debug.LogWarning(debugScriptName + "(" + this.gameObject.name + "): " + msg);
     }
-    private void PrintErrorDebugMsg(string msg)
-    {
+    private void PrintErrorDebugMsg(string msg) {
         Debug.LogError(debugScriptName + "(" + this.gameObject.name + "): " + msg);
     }
     #endregion
 
-    #region Getters_Setters
-
-    #endregion
-    #endregion
-
-    #region UnityFunctions
-
-    #endregion
-
     #region Start_Update
     // Awake is called when the script instance is being loaded.
-    void Awake()
-    {
+    void Awake() {
         PrintDebugMsg("Loaded.");
     }
     // Start is called on the frame when a script is enabled just before any of the Update methods is called the first time.
-    void Start()
-    {
+    void Start() {
 
     }
     // This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
-    void FixedUpdate()
-    {
+    void FixedUpdate() {
 
     }
     // Update is called every frame, if the MonoBehaviour is enabled.
-    void Update()
-    {
+    void Update() {
 
     }
     // LateUpdate is called every frame after all other update functions, if the Behaviour is enabled.
-    void LateUpdate()
-    {
+    void LateUpdate() {
 
     }
     #endregion

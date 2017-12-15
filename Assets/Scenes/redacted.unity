@@ -292,14 +292,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ae1a654373d8b5f49ae7f35641d3020d, type: 3}
   - {fileID: 21300000, guid: 8c39d33fe93b57e438a3f2c0fdeaa275, type: 3}
   - {fileID: 21300000, guid: 79261c0b8b787fc4fab0351f7fb3c879, type: 3}
-  - {fileID: 21300000, guid: 55daa797aa3fe9844ab70bd20d86ffc0, type: 3}
-  - {fileID: 21300000, guid: ed5b429dc3e26e04e9849b3d26cec8bd, type: 3}
-  - {fileID: 21300000, guid: 8d6ca9713cde9dd48bde6d271e7d6229, type: 3}
-  - {fileID: 21300000, guid: 979d5d8839b56a8429f8257c8e91357b, type: 3}
-  - {fileID: 21300000, guid: 937cc77db92896041889fbd41787c7f3, type: 3}
-  - {fileID: 21300000, guid: a0a5c122a7bac9247bdf69a550839ffc, type: 3}
-  - {fileID: 21300000, guid: 3a9266eef1a62524eb0bfa47781960b2, type: 3}
-  - {fileID: 21300000, guid: 9bf9b9d757803394c91c68c18a303a86, type: 3}
+  - {fileID: 21300000, guid: 700e8bf5273b73f469b21348dec1e7ca, type: 3}
+  - {fileID: 21300000, guid: 78e5932de38625f44ba9c742183b67e4, type: 3}
+  - {fileID: 21300000, guid: 85f0a67de40705340b913853b365642e, type: 3}
+  - {fileID: 21300000, guid: eafbf45f6aa4f3b4182ba057789ba2ed, type: 3}
+  - {fileID: 21300000, guid: 87f52ee04f9a4cf4db5606bb6389a272, type: 3}
+  - {fileID: 21300000, guid: 6ce2c22b1efab244ea2cb7e0bf828d5c, type: 3}
+  - {fileID: 21300000, guid: 7b952cd645616b94a9eb8bf7fda50f44, type: 3}
+  - {fileID: 21300000, guid: fd69b9d5699077842ad510b1185c6d38, type: 3}
   rankSprites:
   - {fileID: 21300000, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
   - {fileID: 21300002, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
@@ -351,7 +351,7 @@ MonoBehaviour:
   drawTimeStagger: 0.1
   gtGameOver: {fileID: 0}
   gtRoundResult: {fileID: 0}
-  gtOlympusCount: {fileID: 1630274022}
+  gtOlympusCount: {fileID: 0}
   olympusCount: 0
   deck: {fileID: 0}
   drawPile: []
