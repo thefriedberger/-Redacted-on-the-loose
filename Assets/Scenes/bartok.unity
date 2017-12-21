@@ -405,18 +405,19 @@ MonoBehaviour:
   gtRoundResult: {fileID: 0}
   gtOlympusCount: {fileID: 10514583}
   olympusCount: 0
-  prefabZeus1: {fileID: 1921461032289028, guid: 7d43a0c7b40fc3646a3a6e2e0526373b,
+  prefabZeus1: {fileID: 1268645674501324, guid: 7d43a0c7b40fc3646a3a6e2e0526373b,
     type: 2}
-  prefabZeus2: {fileID: 1130644863239288, guid: 9c95fe98aad246b44a4692620bbd1854,
+  prefabZeus2: {fileID: 1044383223411466, guid: 19b329313389c2a4294697f93b163aa3,
     type: 2}
-  prefabZeus3: {fileID: 1553193162282256, guid: 45b73d33d8aa9ed489418514f4c7936a,
+  prefabZeus3: {fileID: 1383105635297958, guid: fd6bce62293131b4c980a2854f10ddd2,
     type: 2}
-  prefabZeus4: {fileID: 1041441646952956, guid: 3755c3c0e1ee50e40803d1112fe5f863,
+  prefabZeus4: {fileID: 1477665873608200, guid: 955d7eeb7ca93024a93c187d4edc5f0b,
     type: 2}
   Zeus1: {fileID: 0}
   Zeus2: {fileID: 0}
   Zeus3: {fileID: 0}
   Zeus4: {fileID: 0}
+  winner: 0
   deck: {fileID: 0}
   drawPile: []
   discardPile: []
@@ -743,7 +744,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 401bed1d4443f574a95694b509c30744, type: 2}
+  - {fileID: 2100000, guid: fc529a8cf3b987d488631c387493ce78, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
