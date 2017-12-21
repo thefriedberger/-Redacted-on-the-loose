@@ -38,7 +38,7 @@ public class Bartok : MonoBehaviour
 	public GameObject gtGameOver;
 	public GameObject gtRoundResult;
 	public GUIText gtOlympusCount;
-	public float olympusCount = 0;
+	public int olympusCount = 0;
 	public GameObject prefabZeus1;
 	public GameObject prefabZeus2;
 	public GameObject prefabZeus3;
@@ -126,9 +126,9 @@ public class Bartok : MonoBehaviour
 		switch (num)
 		{
 		case 11:
-			olympusCount = olympusCount / 10;
-			Mathf.Round(olympusCount);
-			olympusCount = olympusCount * 10;
+			float ocF = olympusCount / 10;
+			ocF = Mathf.Round (ocF) * 10.0f;
+			olympusCount = (int)ocF;
 			return (olympusCount);
 			break;
 
@@ -159,9 +159,9 @@ public class Bartok : MonoBehaviour
 			}
 			else
 			{
-				char[] olRev = olympusCount.ToString().ToCharArray();
-				Array.Reverse(olRev);
-				int.Parse(new string(olRev));
+				string ocS = ""+olympusCount;
+				ocS = ocS[1].ToString() + ocS[0].ToString();
+				olympusCount = Int32.Parse(ocS);
 			}
 			return olympusCount;
 			break;
