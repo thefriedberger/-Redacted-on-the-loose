@@ -109,10 +109,52 @@ public class CardBartok : Card
         switch(state)
         {
             case CBState.toHand:
-            case CBState.toTarget:
-            case CBState.to:
                 float u = (Time.time - timeStart) / timeDuration;
                 float uC = Easing.Ease(u, MOVE_EASING);
+
+                if (u < 0)
+                {
+                    transform.localPosition = bezierPts[0];
+                    transform.rotation = bezierRots[0];
+                    return;
+                }
+                else if (u >= 1)
+                {
+                    uC = 1;
+                    if (state == CBState.toHand) state = CBState.hand;
+                    if (state == CBState.toTarget) state = CBState.toTarget;
+                    if (state == CBState.to) state = CBState.idle;
+                    transform.localPosition = bezierPts[bezierPts.Count - 1];
+                    transform.rotation = bezierRots[bezierPts.Count - 1];
+                    timeStart = 0;
+
+                    if (reportToFinish != null)
+                    {
+                        reportToFinish.SendMessage("CBCallback2", this);
+                        reportToFinish = null;
+                    }
+                    else if (callbackPlayer != null)
+                    {
+                        callbackPlayer.CBCallback2(this);
+                        callbackPlayer = null;
+                    }
+                }
+                
+                else
+                {
+                    Vector3 pos = Utils.Bezier(uC, bezierPts);
+                    transform.localPosition = pos;
+                    Quaternion rotQ = Utils.Bezier(uC, bezierRots);
+                    transform.rotation = rotQ;
+
+                    if (u > .5f && spriteRenderers[0].sortingOrder != eventualSortOrder) SetSortOrder(eventualSortOrder);
+                    if (u > .75f && spriteRenderers[0].sortingLayerName != eventualSortLayer) SetSortingLayerName(eventualSortLayer);
+                }
+                break;
+            case CBState.toTarget:
+            case CBState.to:
+                u = (Time.time - timeStart) / timeDuration;
+                uC = Easing.Ease(u, MOVE_EASING);
 
                 if(u < 0)
                 {

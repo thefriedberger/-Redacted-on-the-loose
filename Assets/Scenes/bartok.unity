@@ -108,6 +108,58 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &10514582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 10514584}
+  - component: {fileID: 10514583}
+  m_Layer: 0
+  m_Name: GTOlympusCount
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!132 &10514583
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 10514582}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: 0
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: -50}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 100
+  m_FontStyle: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_PixelCorrect: 1
+  m_RichText: 1
+--- !u!4 &10514584
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 10514582}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.11, y: 1.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &318531989
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +369,7 @@ MonoBehaviour:
   - {fileID: 21300026, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
   - {fileID: 21300028, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
   - {fileID: 21300030, guid: a3dfadce2ec324208b9305ffd5119ba8, type: 3}
-  cardBack: {fileID: 21300000, guid: a8185ed8d47594bb8a3b8e2d9233f769, type: 3}
+  cardBack: {fileID: 21300000, guid: ff25bc37550da7443b647ab2fa94ea9b, type: 3}
   cardBackGold: {fileID: 21300000, guid: 8ecf4828943064b3a96f6258b54c0f11, type: 3}
   cardFront: {fileID: 21300000, guid: 873a7658b7ec742228520c7b15510f4d, type: 3}
   cardFrontGold: {fileID: 21300000, guid: 944dc539459fe4109b973bd4c97f68ee, type: 3}
@@ -351,8 +403,20 @@ MonoBehaviour:
   drawTimeStagger: 0.1
   gtGameOver: {fileID: 0}
   gtRoundResult: {fileID: 0}
-  gtOlympusCount: {fileID: 1630274022}
+  gtOlympusCount: {fileID: 10514583}
   olympusCount: 0
+  prefabZeus1: {fileID: 1921461032289028, guid: 7d43a0c7b40fc3646a3a6e2e0526373b,
+    type: 2}
+  prefabZeus2: {fileID: 1130644863239288, guid: 9c95fe98aad246b44a4692620bbd1854,
+    type: 2}
+  prefabZeus3: {fileID: 1553193162282256, guid: 45b73d33d8aa9ed489418514f4c7936a,
+    type: 2}
+  prefabZeus4: {fileID: 1041441646952956, guid: 3755c3c0e1ee50e40803d1112fe5f863,
+    type: 2}
+  Zeus1: {fileID: 0}
+  Zeus2: {fileID: 0}
+  Zeus3: {fileID: 0}
+  Zeus4: {fileID: 0}
   deck: {fileID: 0}
   drawPile: []
   discardPile: []

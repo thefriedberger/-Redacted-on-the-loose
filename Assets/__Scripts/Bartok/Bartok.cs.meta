@@ -1,10 +1,28 @@
 fileFormatVersion: 2
 guid: cc341e2a30608b141914c845a60fe4a1
-timeCreated: 1479782314
+timeCreated: 1513378816
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - deckXML: {instanceID: 0}
+  - layoutXML: {instanceID: 0}
+  - gtGameOver: {instanceID: 0}
+  - gtRoundResult: {instanceID: 0}
+  - gtOlympusCount: {instanceID: 0}
+  - prefabZeus1: {instanceID: 0}
+  - prefabZeus2: {instanceID: 0}
+  - prefabZeus3: {instanceID: 0}
+  - prefabZeus4: {instanceID: 0}
+  - Zeus1: {instanceID: 0}
+  - Zeus2: {instanceID: 0}
+  - Zeus3: {instanceID: 0}
+  - Zeus4: {instanceID: 0}
+  - deck: {instanceID: 0}
+  - layout: {instanceID: 0}
+  - layoutAnchor: {instanceID: 0}
+  - targetCard: {instanceID: 0}
+  - turnLight: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
